@@ -1,36 +1,210 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en" dir="ltr">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>@yield('title')</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <!-- theme meta -->
+    <meta name="theme-name" content="mono" />
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="{{asset('assets/plugins/material/css/materialdesignicons.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/plugins/simplebar/simplebar.css')}}" rel="stylesheet" />
+    <!-- PLUGINS CSS STYLE -->
+    <link href="{{asset('assets/plugins/nprogress/nprogress.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css')}}"
+        rel="stylesheet" />
+    <link href="{{asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/plugins/toaster/toastr.min.css')}}" rel="stylesheet" />
+    <!-- MONO CSS -->
+    <link id="main-css-href" rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
+    <!-- FAVICON -->
+    <link href="{{asset('assets/images/favicon.png')}}" rel="shortcut icon" />
+    <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
+</head>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+<body class="navbar-fixed sidebar-fixed" id="body">
+    
+
+    <div id="toaster"></div>
+    <div class="wrapper">
+            <!-- Sidebar -->
+        @include('layouts.sidebar')
+        <div class="page-wrapper">
+            <!-- Header -->
+            @include('layouts.header')
+            <div class="content-wrapper">
+                @yield('content')
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer mt-auto">
+                <div class="copyright bg-white">
+                    <p>
+                        &copy; <span id="copy-year"></span> Copyright Mono Dashboard Bootstrap Template by <a
+                            class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
+                    </p>
+                </div>
+                <script>
+                    var d = new Date();
+                    var year = d.getFullYear();
+                    document.getElementById("copy-year").innerHTML = year;
+                </script>
+            </footer>
         </div>
-    </body>
+    </div>
+
+    <!-- Card Offcanvas -->
+    <div class="card card-offcanvas" id="contact-off">
+        <div class="card-header">
+            <h2>Contacts</h2>
+            <a href="#" class="btn btn-primary btn-pill px-4">Add New</a>
+        </div>
+        <div class="card-body">
+
+            <div class="mb-4">
+                <input type="text" class="form-control form-control-lg form-control-secondary rounded-0"
+                    placeholder="Search contacts...">
+            </div>
+
+            <div class="media media-sm">
+                <div class="media-sm-wrapper">
+                    <a href="user-profile.html">
+                        <img src="{{asset('assets/images/user/user-sm-01.jpg')}}" alt="User Image">
+                        <span class="active bg-primary"></span>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="user-profile.html">
+                        <span class="title">Selena Wagner</span>
+                        <span class="discribe">Designer</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="media media-sm">
+                <div class="media-sm-wrapper">
+                    <a href="user-profile.html">
+                        <img src="{{asset('assets/images/user/user-sm-02.jpg')}}" alt="User Image">
+                        <span class="active bg-primary"></span>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="user-profile.html">
+                        <span class="title">Walter Reuter</span>
+                        <span>Developer</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="media media-sm">
+                <div class="media-sm-wrapper">
+                    <a href="user-profile.html">
+                        <img src="{{asset('assets/images/user/user-sm-03.jpg')}}" alt="User Image">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="user-profile.html">
+                        <span class="title">Larissa Gebhardt</span>
+                        <span>Cyber Punk</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="media media-sm">
+                <div class="media-sm-wrapper">
+                    <a href="user-profile.html">
+                        <img src="{{asset('assets/images/user/user-sm-04.jpg')}}" alt="User Image">
+                    </a>
+
+                </div>
+                <div class="media-body">
+                    <a href="user-profile.html">
+                        <span class="title">Albrecht Straub</span>
+                        <span>Photographer</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="media media-sm">
+                <div class="media-sm-wrapper">
+                    <a href="user-profile.html">
+                        <img src="{{asset('assets/images/user/user-sm-05.jpg')}}" alt="User Image">
+                        <span class="active bg-danger"></span>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="user-profile.html">
+                        <span class="title">Leopold Ebert</span>
+                        <span>Fashion Designer</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="media media-sm">
+                <div class="media-sm-wrapper">
+                    <a href="user-profile.html">
+                        <img src="{{asset('assets/images/user/user-sm-06.jpg')}}" alt="User Image">
+                        <span class="active bg-primary"></span>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="user-profile.html">
+                        <span class="title">Selena Wagner</span>
+                        <span>Photographer</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/simplebar/simplebar.min.js')}}"></script>
+    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/apexcharts/apexcharts.js')}}"></script>
+    <script src="{{asset('assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-world-mill.js')}}"></script>
+    <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-us-aea.js')}}"></script>
+    <script src="{{asset('assets/plugins/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('input[name="dateRange"]').daterangepicker({
+                autoUpdateInput: false,
+                singleDatePicker: true,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+            jQuery('input[name="dateRange"]').on('apply.daterangepicker', function (ev, picker) {
+                jQuery(this).val(picker.startDate.format('MM/DD/YYYY'));
+            });
+            jQuery('input[name="dateRange"]').on('cancel.daterangepicker', function (ev, picker) {
+                jQuery(this).val('');
+            });
+        });
+    </script>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js')}}"></script>
+    <script src="{{asset('assets/plugins/toaster/toastr.min.js')}}"></script>
+    <script src="{{asset('assets/js/mono.js')}}"></script>
+    <script src="{{asset('assets/js/chart.js')}}"></script>
+    <script src="{{asset('assets/js/map.js')}}"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
+</body>
+
 </html>
