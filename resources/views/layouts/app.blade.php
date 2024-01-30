@@ -28,6 +28,8 @@
     <!-- FAVICON -->
     <link href="{{asset('assets/images/favicon.png')}}" rel="shortcut icon" />
     <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
+    {{-- font awesome --}}
+    
 </head>
 
 <body class="navbar-fixed sidebar-fixed" id="body">
