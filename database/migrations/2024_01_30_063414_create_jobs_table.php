@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
-            $table->string('description',200);
+            $table->string('title',10);
+            $table->string('position',50);
+            $table->integer('salary');
+            $table->integer('vacancy');
+            $table->string('image',50);
+            $table->boolean('availability');
+            $table->integer('category_id');
+            $table->integer('location_id');
+            $table->integer('industry_id');
+            $table->integer('company_id');
+            $table->text('description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

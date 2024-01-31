@@ -69,8 +69,8 @@
                     </a>
                     <ul class="collapse" id="job" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li><a class="sidenav-item-link"href="email-inbox.html"><span class="nav-text">All Jobs</span></a></li>
-                            <li><a class="sidenav-item-link" href="email-details.html"><span class="nav-text">Add Job</span></a></li>
+                            <li><a class="sidenav-item-link"href="{{route('jobs.index')}}"><span class="nav-text">All Jobs</span></a></li>
+                            <li><a class="sidenav-item-link" href="{{route('jobs.create')}}"><span class="nav-text">Add Job</span></a></li>
                         </div>
                     </ul>
                 </li>
